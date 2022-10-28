@@ -10,13 +10,14 @@ import random
 import cv2
 import numpy as np
 import datetime
+import subprocess
 import os
 
 
 class Gui:
     def __init__(self):
         self.mob = "Krets(1)"
-        self.version="0.0.1"
+        self.version="0.0.3"
         self.mobpath = None
         self.pocket1 = None
         self.pocket2 = None
@@ -145,7 +146,7 @@ class Gui:
         self.save()
         print(Colorate.Diagonal(Colors.DynamicMIX((green, purple)), Center.XCenter(text)))
         print('\n')
-        #print(stagenormal(f"Sürüm 0.0.1 {Col.reset}", "!", col2=green))
+        #print(stagenormal(f"Sürüm 0.0.3 {Col.reset}", "!", col2=green))
         welcome="Hoşgeldin! "+self.ID
         print(stagenormal(welcome, "!", col2=green))
         timeleft="Kalan Günlerin : "+str(self.time)
@@ -212,7 +213,6 @@ class Gui:
                 return "exit"
             elif x == "exit":
                 return "exit"
-
 
     def lvl1mobs(self):
         while True:
@@ -1070,9 +1070,29 @@ class Gui:
             time.sleep(3)
             return 0
 
+    def security(self):
+        current_machine_id = str(subprocess.check_output('wmic csproduct get uuid'), 'utf-8').split('\n')[1].strip()
+        users = dbsec.child("User").get()
+        value = (users.val())
+        try:
+            uuidvalue = str(value[self.Usernamea])
+        except:
+            data = {self.Usernamea: current_machine_id}
+            dbsec.child("User").update({self.Usernamea: current_machine_id})
+            print(stagenormal(f"Hesap Bağlandı Birdaha Giriş Yapınız {Col.reset}", "!", col2=dark))
+            time.sleep(3)
+            return 0
+        if uuidvalue == current_machine_id:
+            print(stagenormal(f"Doğrulandı {Col.reset}", "!", col2=green))
+            return 1
+        else:
+            print(stagenormal(f"Tanınmayan Bilgisayar!!! {Col.reset}", "!", col2=red))
+            time.sleep(3)
+            return 0
+
     def login(self):
         System.Size(75, 22)
-        System.Title("Raven Dwar 0.0.1")
+        System.Title("Raven Dwar 0.0.3")
         Cursor.HideCursor()
         print(Colorate.Diagonal(Colors.DynamicMIX((green, purple)), Center.XCenter(text)))
         print('\n')
@@ -1093,6 +1113,10 @@ class Gui:
         x = self.checkversion()
         if x == 0:
             print("1")
+            return 0
+        x = self.security()
+        if x == 0:
+            print("5")
             return 0
         while True:
             self.blank()
@@ -1169,13 +1193,15 @@ class MainProcess:
         time.sleep(1)
         x, y, w, h = self.findsearch()
         self.x, self.y, self.w, self.h = self.findhunt()
+        self.bear = self.waitforimage(bear,5,0.80)
         while True:
             hunt = self.huntmob()
             if hunt is None:
+                self.errorcheck()
                 errorcounter += 1
                 self.randomclick(x, y)
                 if errorcounter > 20:
-                    pyautogui.click(937, 108)
+                    pyautogui.click(self.bear)
                     errorcounter = 0
                     time.sleep(5)
             else:
@@ -1272,7 +1298,7 @@ class MainProcess:
                 y = third[1]
                 x += 25
                 w -= 18
-                h += 8
+                h += 1
                 # im1 = pyautogui.screenshot(region=(x, y, w, h))
                 # im1.save(r"./imsg.png")
                 return x, y, w, h
@@ -1291,13 +1317,17 @@ class MainProcess:
         return None
 
     def errorcheck(self):
-        x = pyautogui.locateOnScreen(close, grayscale=True, confidence=0.80)
+        x = self.waitforimage(close,3,0.80)
         if x is not None:
             pyautogui.click(x)
+            time.sleep(0.2)
+            pyautogui.click(self.bear)
             return 1
-        x = pyautogui.locateOnScreen(cancel, grayscale=True, confidence=0.80)
+        x = self.waitforimage(cancel,3,0.80)
         if x is not None:
             pyautogui.click(x)
+            time.sleep(0.2)
+            pyautogui.click(self.bear)
             return 1
 
     def castattack(self,caller):
@@ -1328,24 +1358,22 @@ class MainProcess:
             self.printer("Won!!!")
             x = 1
             if x is not None:
-                pyautogui.click(937, 108)
+                pyautogui.click(self.bear)
                 self.wincount += 1
                 if self.wincount == self.maxhunt:
                     self.aquit()
                     self.printer("Kesim Limiti")
-                    exit("400 limit")
+                    exit("kesimlimiti")
                 return 1
 
     def gamebugfix(self):
-        x = pyautogui.locateOnScreen(bear, grayscale=True, confidence=0.80)
+        pyautogui.click(self.bear)
+        time.sleep(10)
+        x = self.waitforimage(fight, 20, 0.75)
         if x is not None:
-            pyautogui.click(x)
-            time.sleep(10)
-            x = self.waitforimage(fight, 20, 0.75)
-            if x is not None:
-                self.fightmodule()
-            else:
-                return 1
+            self.fightmodule()
+        else:
+            return 1
 
     def huntmob(self):
         self.checkwin()

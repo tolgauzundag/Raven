@@ -9,6 +9,24 @@ firebaseConfig={ "apiKey": "AIzaSyC3fvl8ZWICyNWuHGkqPxTMRWnfOOKMhNk",
   "messagingSenderId": "176222167092",
   "appId": "1:176222167092:web:2edc8e1e5522e23be4ea61",
   "measurementId": "G-Z9QX5P2SJ5"}
+
+uidsystem = {
+  "apiKey": "AIzaSyCH5qwnuWCQVwdcE3Qbvz11I-9A0RMXi9s",
+  "authDomain": "animated-flow-318519.firebaseapp.com",
+  "databaseURL": "https://animated-flow-318519-default-rtdb.firebaseio.com",
+  "projectId": "animated-flow-318519",
+  "storageBucket": "animated-flow-318519.appspot.com",
+  "messagingSenderId": "519430581076",
+  "appId": "1:519430581076:web:6210e69583b6e7696c36c1"
+};
+
+
+firebasee=pyrebase.initialize_app(uidsystem)
+dbsec=firebasee.database()
+authsec=firebasee.auth()
+
+
+
 text = r"""8888888b.         d8888 888     888 8888888888 888b    888 
 888   Y88b       d88888 888     888 888        8888b   888 
 888    888      d88P888 888     888 888        88888b  888 
