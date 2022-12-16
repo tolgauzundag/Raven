@@ -44,15 +44,19 @@ light = Col.light_gray
 purple = Colors.StaticMIX((Col.purple, Col.blue))
 green = Col.green
 red = Col.red
+blue = Col.blue
+gray = Col.gray
 bpurple = Colors.StaticMIX((Col.purple, Col.blue, Col.blue))
 firebase=pyrebase.initialize_app(firebaseConfig)
 auth=firebase.auth()
 db=firebase.database()
 close = "img/dwar/buttons/close.png"
 cancel = "img/dwar/buttons/cancel.png"
-win = "img/dwar/fight/win.png"
+win = "img/dwar/fight/win2.png"
 bear = "img/dwar/fight/bear.png"
 milk = "img/dwar/fight/milk.png"
+mana = "img/dwar/fight/mana.png"
+minimana = "img/dwar/fight/minimana.png"
 s1 = "img/dwar/fight/11.png"
 s2 = "img/dwar/fight/22.png"
 minimilk = "img/dwar/fight/minimilk.png"
@@ -60,11 +64,16 @@ coke = "img/dwar/fight/coke.png"
 minicoke = "img/dwar/fight/minicoke.png"
 fight = "img/global/vs.png"
 map = "img/global/map.png"
-sword = "img/global/sword.png"
+sword = "img/global/sword2.png"
+mage = "img/global/mage.png"
 closebutton = "img/dwar/buttons/quit.png"
 ####
 test = "img/global/test.png"
 test3 = "img/global/test3.png"
+
+aup = "img/dwar/fight/attackup.png"
+amid = "img/dwar/fight/attackmid.png"
+alow = "img/dwar/fight/attacklow.png"
 
 
 atk1 = "mid"

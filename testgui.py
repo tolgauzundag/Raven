@@ -17,7 +17,7 @@ import os
 class Gui:
     def __init__(self):
         self.mob = "Krets(1)"
-        self.version="0.0.3"
+        self.version="1.0.2"
         self.mobpath = None
         self.pocket1 = None
         self.pocket2 = None
@@ -34,6 +34,7 @@ class Gui:
         self.atk6 = "Boş"
         self.atk7 = "Boş"
         self.maxhunt = 400
+        self.magelvl = "Kapalı"
         try:
             self.load()
         except:
@@ -144,9 +145,9 @@ class Gui:
 
     def mainscreen(self):
         self.save()
-        print(Colorate.Diagonal(Colors.DynamicMIX((green, purple)), Center.XCenter(text)))
+        print(Colorate.Diagonal(Colors.DynamicMIX((green, Col.black)), Center.XCenter(text)))
         print('\n')
-        #print(stagenormal(f"Sürüm 0.0.3 {Col.reset}", "!", col2=green))
+        #print(stagenormal(f"Sürüm 0.0.4 {Col.reset}", "!", col2=green))
         welcome="Hoşgeldin! "+self.ID
         print(stagenormal(welcome, "!", col2=green))
         timeleft="Kalan Günlerin : "+str(self.time)
@@ -186,8 +187,10 @@ class Gui:
             self.blank()
             self.save()
             c = "[1]Avlanma_Limiti: " + str(self.maxhunt)
+            c2 = "[3]Büyücü: " + str(self.magelvl)
             print(Colorate.Color(Colors.green, c, True, ))
             print(Colorate.Color(Colors.green, "[2]Süper_Vuruş_Ayarı ", True, ))
+            #print(Colorate.Color(Colors.green, c2, True, ))
             print(Colorate.Color(Colors.green, "[g]Geri", True, ))
             x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
@@ -203,6 +206,16 @@ class Gui:
             elif x == "2":
                 self.superattack()
                 return
+            elif x == "3":
+                self.blank()
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Açık", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Kapalı", 1))
+                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = str(x)
+                if x == "1":
+                    self.magelvl = "Açık"
+                elif x == "2":
+                    self.magelvl = "Kapalı"
             elif x == "g":
                 return "exit"
             elif x == "k":
@@ -653,6 +666,7 @@ class Gui:
             print(Colorate.Color(Colors.green, "[3]Zararcı Yeti Yukari(9)", True, ))
             print(Colorate.Color(Colors.green, "[4]Vahşi Buz Ayısı(9)", True, ))
             print(Colorate.Color(Colors.green, "[5]Gardiyan GungHO(9)", True, ))
+            print(Colorate.Color(Colors.green, "[6]Büyük Akrep(9)", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
             x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
@@ -675,6 +689,31 @@ class Gui:
             elif x == "5":
                 self.mob = "Gardiyan GungHO(9)"
                 self.mobpath = "img/dwar/mobs/gardiyangungho.png"
+            elif x == "6":
+                self.mob = "Büyük Akrep(9)"
+                self.mobpath = "img/dwar/mobs/bakrep.png"
+                return True
+            elif x == "g":
+                return "exit"
+            elif x == "k":
+                return "exit"
+            elif x == "back":
+                return "exit"
+            elif x == "b":
+                return "exit"
+            elif x == "exit":
+                return "exit"
+
+    def lvl10mobs(self):
+        while True:
+            self.blank()
+            print(Colorate.Color(Colors.green, "[1]Kral Akrep(10)", True, ))
+            print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
+            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = str(x)
+            if x == "1":
+                self.mob = "Kral Akrep(10)"
+                self.mobpath = "img/dwar/mobs/kakrep.png"
                 return True
             elif x == "g":
                 return "exit"
@@ -699,6 +738,7 @@ class Gui:
             print(Colorate.Color(Colors.green, "[7]Seviye 7 Moblar", True, ))
             print(Colorate.Color(Colors.green, "[8]Seviye 8 Moblar", True, ))
             print(Colorate.Color(Colors.green, "[9]Seviye 9 Moblar", True, ))
+            print(Colorate.Color(Colors.green, "[10]Seviye 10 Moblar", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
             x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
@@ -737,6 +777,10 @@ class Gui:
             elif x == "9":
                 self.blank()
                 self.lvl9mobs()
+                return
+            elif x == "10":
+                self.blank()
+                self.lvl10mobs()
                 return x
             elif x == "g":
                 return "exit"
@@ -767,72 +811,137 @@ class Gui:
                 self.blank()
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
                 x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket1 = "Güç"
                 elif x == "2":
                     self.pocket1 = "Hayat"
+                elif x == "3":
+                    self.pocket1 = "Mana"
+                elif x == "4":
+                    self.pocket1 = "Boş"
+                elif x == "5":
+                    self.pocket1 = "Savaş Başında Kullan"
+
             elif x == "2":
                 self.blank()
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
                 x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket2 = "Güç"
                 elif x == "2":
                     self.pocket2 = "Hayat"
+                elif x == "3":
+                    self.pocket2 = "Mana"
+                elif x == "4":
+                    self.pocket2 = "Boş"
+                elif x == "5":
+                    self.pocket2 = "Savaş Başında Kullan"
             elif x == "3":
                 self.blank()
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
                 x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket3 = "Güç"
                 elif x == "2":
                     self.pocket3 = "Hayat"
+                elif x == "3":
+                    self.pocket3 = "Mana"
+                elif x == "4":
+                    self.pocket3 = "Boş"
+                elif x == "5":
+                    self.pocket3 = "Savaş Başında Kullan"
             elif x == "4":
                 self.blank()
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
                 x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket4 = "Güç"
                 elif x == "2":
                     self.pocket4 = "Hayat"
+                elif x == "3":
+                    self.pocket4 = "Mana"
+                elif x == "4":
+                    self.pocket4 = "Boş"
+                elif x == "5":
+                    self.pocket4 = "Savaş Başında Kullan"
             elif x == "5":
                 self.blank()
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
                 x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket5 = "Güç"
                 elif x == "2":
                     self.pocket5 = "Hayat"
+                elif x == "3":
+                    self.pocket5 = "Mana"
+                elif x == "4":
+                    self.pocket5 = "Boş"
+                elif x == "5":
+                    self.pocket5 = "Savaş Başında Kullan"
+
             elif x == "6":
                 self.blank()
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
                 x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket6 = "Güç"
                 elif x == "2":
                     self.pocket6 = "Hayat"
+                elif x == "3":
+                    self.pocket6 = "Mana"
+                elif x == "4":
+                    self.pocket6 = "Boş"
+                elif x == "5":
+                    self.pocket6 = "Savaş Başında Kullan"
             elif x == "7":
                 self.blank()
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
                 x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket7 = "Güç"
                 elif x == "2":
                     self.pocket7 = "Hayat"
+                elif x == "3":
+                    self.pocket7 = "Mana"
+                elif x == "4":
+                    self.pocket7 = "Boş"
+                elif x == "5":
+                    self.pocket7 = "Savaş Başında Kullan"
             elif x == "g":
                 return "exit"
             elif x == "k":
@@ -1092,9 +1201,9 @@ class Gui:
 
     def login(self):
         System.Size(75, 22)
-        System.Title("Raven Dwar 0.0.3")
+        System.Title("Raven Dwar 1.0.2")
         Cursor.HideCursor()
-        print(Colorate.Diagonal(Colors.DynamicMIX((green, purple)), Center.XCenter(text)))
+        print(Colorate.Diagonal(Colors.DynamicMIX((green, Col.black)), Center.XCenter(text)))
         print('\n')
         self.Usernamea = input(stage(f"Kullanıcı Adı : {dark}-> {Col.reset}", "?", col2=bpurple))
         #self.Usernamea = "mrblazer31"
@@ -1144,7 +1253,8 @@ class Gui:
         self.atk4,
         self.atk5,
         self.atk6,
-        self.atk7
+        self.atk7,
+        self.magelvl
         ]
         pickle.dump(datalist,open("ravensave.dat","wb"))
 
@@ -1173,6 +1283,7 @@ class Gui:
         self.atk5 = datalist[14]
         self.atk6 = datalist[15]
         self.atk7 = datalist[16]
+        self.magelvl = datalist[17]
 
     def printer(self,msg):
         print(stagenormal(msg, "!", col2=green))
@@ -1183,6 +1294,7 @@ class MainProcess:
     def __init__(self):
         self.x, self.y, self.w, self.h = None, None, None, None
         self.wincount=0
+        self.speed = "Normal"
         self.firstvs = True
         self.xhpbar = None
         self.yhpbar = None
@@ -1197,10 +1309,10 @@ class MainProcess:
         while True:
             hunt = self.huntmob()
             if hunt is None:
-                self.errorcheck()
                 errorcounter += 1
                 self.randomclick(x, y)
                 if errorcounter > 20:
+                    self.errorcheck()
                     pyautogui.click(self.bear)
                     errorcounter = 0
                     time.sleep(5)
@@ -1236,11 +1348,18 @@ class MainProcess:
         self.atk5 = datalist[14]
         self.atk6 = datalist[15]
         self.atk7 = datalist[16]
+        self.magelvl = datalist[17]
 
     def scr(self,x, y, w, h):
         if x is not None:
             im1 = pyautogui.screenshot(region=(x, y, w, h))
             im1.save(r"./hpbar.png")
+            return
+
+    def scrmana(self,x, y, w, h):
+        if x is not None:
+            im1 = pyautogui.screenshot(region=(x, y, w, h))
+            im1.save(r"./manabar.png")
             return
 
     def aquit(self):
@@ -1316,6 +1435,18 @@ class MainProcess:
         self.printer("Görsel Bekleniyor!!")
         return None
 
+    def waitforimageshort(self,img, tries,conf):
+        c = 0
+        while c < tries:
+            x = pyautogui.locateOnScreen(img, grayscale=True, confidence=conf)
+            if x is not None:
+                self.printer("Görsel Bulundu")
+                return x
+            else:
+                c += 1
+        self.printer("Görsel Bekleniyor!!")
+        return None
+
     def errorcheck(self):
         x = self.waitforimage(close,3,0.80)
         if x is not None:
@@ -1330,25 +1461,44 @@ class MainProcess:
             pyautogui.click(self.bear)
             return 1
 
+    def errorcheckshort(self):
+        x = pyautogui.locateOnScreen(close, grayscale=True, confidence=0.80)
+        if x is not None:
+            pyautogui.click(x)
+            time.sleep(0.1)
+            pyautogui.click(self.bear)
+            return 1
+        x = pyautogui.locateOnScreen(cancel, grayscale=True, confidence=0.80)
+        if x is not None:
+            pyautogui.click(x)
+            time.sleep(0.1)
+            pyautogui.click(self.bear)
+            return 1
+
     def castattack(self,caller):
         if caller == "Yukarı":
-            x = pyautogui.locateOnScreen(sword, grayscale=True, confidence=0.80)
+            x = pyautogui.locateOnScreen(aup, grayscale=True, confidence=0.80)
             if x is not None:
                 pyautogui.click(x)
-                pyautogui.press("q")
                 return 1
         elif caller == "Orta":
-            x = pyautogui.locateOnScreen(sword, grayscale=True, confidence=0.80)
+            x = pyautogui.locateOnScreen(amid, grayscale=True, confidence=0.80)
             if x is not None:
                 pyautogui.click(x)
-                pyautogui.press("w")
                 return 1
         elif caller == "Alt":
-            x = pyautogui.locateOnScreen(sword, grayscale=True, confidence=0.80)
+            x = pyautogui.locateOnScreen(alow, grayscale=True, confidence=0.80)
             if x is not None:
                 pyautogui.click(x)
-                pyautogui.press("e")
                 return 1
+        else:
+            return None
+
+    def castmagic(self,caller):
+        if caller == "Yukarı":
+            pyautogui.click(self.vs)
+            pyautogui.press("q")
+            return 1
         else:
             return None
 
@@ -1358,6 +1508,9 @@ class MainProcess:
             self.printer("Won!!!")
             x = 1
             if x is not None:
+                if self.speed == "Normal":
+                    rand = random.randint(1,3)
+                    time.sleep(rand)
                 pyautogui.click(self.bear)
                 self.wincount += 1
                 if self.wincount == self.maxhunt:
@@ -1392,9 +1545,12 @@ class MainProcess:
             pyautogui.click()
             x = self.errorcheck()
             if x is not None:
+                x = random.randint(0,100)
+                if x < 50:
+                    pyautogui.click(self.bear)
                 return None
             else:
-                x = self.waitforimage(fight, 10, 0.75)
+                x = self.waitforimage(fight, 20, 0.75)
                 if x is not None:
                     self.printer("Tıklama Başarılı Savaş Fonksiyonu Çağırılıyor!!")
                     x = self.fightmodule()
@@ -1416,48 +1572,56 @@ class MainProcess:
 
     def cokeuse(self):
         #POWER POTİON
-        x = pyautogui.locateOnScreen(coke, grayscale=True, confidence=0.80)
-        if x is not None:
+        power = pyautogui.locateOnScreen(coke, grayscale=True, confidence=0.80)
+        if power is not None:
             x = pyautogui.locateOnScreen(minicoke, grayscale=True, confidence=0.80, region=(self.xeffect, self.yeffect, 209, 49))
             if x is None:
-                if self.pocket1 == "Güç":
-                    pyautogui.press("1")
-                if self.pocket2 == "Güç":
-                    pyautogui.press("2")
-                if self.pocket3 == "Güç":
-                    pyautogui.press("3")
-                if self.pocket4 == "Güç":
-                    pyautogui.press("4")
-                if self.pocket5 == "Güç":
-                    pyautogui.press("5")
-                if self.pocket6 == "Güç":
-                    pyautogui.press("6")
-                if self.pocket7 == "Güç":
-                    pyautogui.press("7")
+                pyautogui.click(power)
+                x = random.randint(2,5)
+                x = "0"+"."+ str(x)
+                x = float(x)
+                time.sleep(x)
+                self.printer("Güç İksiri Kullanıldı")
                 return 1
+        else:
+            return 0
+
+    def manause(self):
+        #Mana POTİON
+        x = pyautogui.locateOnScreen(minimana, grayscale=True, confidence=0.80, region=(self.xeffect, self.yeffect, 209, 49))
+        if x is None:
+            x = pyautogui.locateOnScreen(mana, grayscale=True, confidence=0.80)
+            if x is not None:
+                if self.pocket1 == "Mana":
+                    pyautogui.press("1")
+                if self.pocket2 == "Mana":
+                    pyautogui.press("2")
+                if self.pocket3 == "Mana":
+                    pyautogui.press("3")
+                if self.pocket4 == "Mana":
+                    pyautogui.press("4")
+                if self.pocket5 == "Mana":
+                    pyautogui.press("5")
+                if self.pocket6 == "Mana":
+                    pyautogui.press("6")
+                if self.pocket7 == "Mana":
+                    pyautogui.press("7")
+                self.printer("Mana İksiri Kullanıldı")
+                time.sleep(1)
+                return 1
+            else:
+                pyautogui.press("tab")
+                return 158
         else:
             return 0
 
     def milkuse(self):
         #HP POTİON
-        x = pyautogui.locateOnScreen(milk, grayscale=True, confidence=0.80)
-        if x is not None:
+        hppotion = pyautogui.locateOnScreen(milk, grayscale=True, confidence=0.80)
+        if hppotion is not None:
             x = pyautogui.locateOnScreen(minimilk, grayscale=True, confidence=0.80, region=(self.xeffect, self.yeffect, 209, 49))
             if x is None:
-                if self.pocket1 == "Hayat":
-                    pyautogui.press("1")
-                if self.pocket2 == "Hayat":
-                    pyautogui.press("2")
-                if self.pocket3 == "Hayat":
-                    pyautogui.press("3")
-                if self.pocket4 == "Hayat":
-                    pyautogui.press("4")
-                if self.pocket5 == "Hayat":
-                    pyautogui.press("5")
-                if self.pocket6 == "Hayat":
-                    pyautogui.press("6")
-                if self.pocket7 == "Hayat":
-                    pyautogui.press("7")
+                pyautogui.click(hppotion)
                 self.printer("Hayat İksiri Kullanıldı")
                 time.sleep(3)
                 return 1
@@ -1487,6 +1651,77 @@ class MainProcess:
             else:
                 pass
 
+    def manacheck(self):
+        self.scrmana(self.xmanabar, self.ymanabar, 9, 10)
+        frame = cv2.imread("manabar.png")
+        if True:
+            key = "purple"
+            hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+            kernel = np.ones((2, 2), np.uint8)
+
+            low = 106, 255, 53
+            up = 109, 255, 97
+
+            mask = cv2.inRange(hsv, low, up)
+            mask = cv2.erode(mask, kernel, iterations=0)
+            mask = cv2.dilate(mask, kernel, iterations=2)
+            mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+            mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+            cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2]
+            ###################################
+            if len(cnts) > 0:
+                x = self.manause()
+                if x == 158:
+                    return 158
+            else:
+                pass
+
+    def firstuse(self):
+        if self.pocket1 == "Savaş Başında Kullan":
+            pyautogui.press("1")
+            time.sleep(1.5)
+        if self.pocket2 == "Savaş Başında Kullan":
+            pyautogui.press("2")
+            time.sleep(1.5)
+        if self.pocket3 == "Savaş Başında Kullan":
+            pyautogui.press("3")
+            time.sleep(1.5)
+        if self.pocket4 == "Savaş Başında Kullan":
+            pyautogui.press("4")
+            time.sleep(1.5)
+        if self.pocket5 == "Savaş Başında Kullan":
+            pyautogui.press("5")
+            time.sleep(1.5)
+        if self.pocket6 == "Savaş Başında Kullan":
+            pyautogui.press("6")
+            time.sleep(1.5)
+        if self.pocket7 == "Savaş Başında Kullan":
+            pyautogui.press("7")
+            time.sleep(1.5)
+        return
+
+    def mage(self):
+        counter = 1
+        errorcount = 0
+        while errorcount < 20:
+            self.errorcheckshort()
+            c = self.checkwin()
+            if c is not None:
+                return 1
+            x = self.waitforimageshort(mage, 5, 0.75)
+            if x is not None:
+                errorcount = 0
+                self.hpcheck()
+                x = self.manacheck()
+                if x == 158:
+                    return 158
+                if counter == 1:
+                    if self.atk1 != "Boş":
+                        x = self.castmagic("Yukarı")
+            else:
+                errorcount += 1
+        return None
+
     def fightmodule(self):
         counter = 1
         errorcount = 0
@@ -1495,15 +1730,26 @@ class MainProcess:
             xv, yv, wv, hv = x[0], x[1], x[2], x[3]
             self.xhpbar = int(xv) - 81
             self.yhpbar = int(yv) + 33
+            self.xmanabar = int(xv) - 120
+            self.ymanabar = int(yv) + 47
             self.firstvs = False
             self.xeffect = int(xv) - 195
-            self.yeffect = int(xv) + 60
+            self.yeffect = int(yv) + 60
+        self.firstuse()
+        if self.magelvl == "Açık":
+            x = self.mage()
+            if x == None:
+                return None
+            elif x == 1:
+                return 1
+            elif x == 158:
+                print("Normal Saldırıya Geçildi")
         while errorcount < 20:
-            self.errorcheck()
+            self.errorcheckshort()
             c = self.checkwin()
             if c is not None:
                 return 1
-            x = self.waitforimage(sword, 3, 0.75)
+            x = self.waitforimageshort(sword, 5, 0.75)
             if x is not None:
                 errorcount = 0
                 self.hpcheck()
