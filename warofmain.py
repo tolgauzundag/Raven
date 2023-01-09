@@ -26,13 +26,13 @@ class Gui:
         self.pocket5 = None
         self.pocket6 = None
         self.pocket7 = None
-        self.atk1 = "Boş"
-        self.atk2 = "Boş"
-        self.atk3 = "Boş"
-        self.atk4 = "Boş"
-        self.atk5 = "Boş"
-        self.atk6 = "Boş"
-        self.atk7 = "Boş"
+        self.atk1 = "None"
+        self.atk2 = "None"
+        self.atk3 = "None"
+        self.atk4 = "None"
+        self.atk5 = "None"
+        self.atk6 = "None"
+        self.atk7 = "None"
         self.maxhunt = 400
         self.magelvl = "Kapalı"
         try:
@@ -95,52 +95,52 @@ class Gui:
     def attackstring(self, pocket):
         if pocket == 1:
             if self.atk1 is not None:
-                x1 = "[1]Atak1: " + self.atk1
+                x1 = "[1]Attack1: " + self.atk1
                 return x1
             else:
-                x1 = "[1]Atak1: " + "Boş"
+                x1 = "[1]Attack1: " + "None"
                 return x1
         if pocket == 2:
             if self.atk2 is not None:
-                x1 = "[2]Atak2: " + self.atk2
+                x1 = "[2]Attack2: " + self.atk2
                 return x1
             else:
-                x1 = "[2]Atak2: " + "Boş"
+                x1 = "[2]Attack2: " + "None"
                 return x1
         if pocket == 3:
             if self.atk3 is not None:
-                x1 = "[3]Atak3: " + self.atk3
+                x1 = "[3]Attack3: " + self.atk3
                 return x1
             else:
-                x1 = "[3]Atak3: " + "Boş"
+                x1 = "[3]Attack3: " + "None"
                 return x1
         if pocket == 4:
             if self.atk4 is not None:
-                x1 = "[4]Atak4: " + self.atk4
+                x1 = "[4]Attack4: " + self.atk4
                 return x1
             else:
-                x1 = "[4]Atak4: " + "Boş"
+                x1 = "[4]Attack4: " + "None"
                 return x1
         if pocket == 5:
             if self.atk5 is not None:
-                x1 = "[5]Atak5: " + self.atk5
+                x1 = "[5]Attack5: " + self.atk5
                 return x1
             else:
-                x1 = "[5]Atak5: " + "Boş"
+                x1 = "[5]Attack5: " + "None"
                 return x1
         if pocket == 6:
             if self.atk6 is not None:
-                x1 = "[6]Atak6: " + self.atk6
+                x1 = "[6]Attack6: " + self.atk6
                 return x1
             else:
-                x1 = "[6]Atak6: " + "Boş"
+                x1 = "[6]Attack6: " + "None"
                 return x1
         if pocket == 7:
             if self.atk7 is not None:
-                x1 = "[7]Atak7: " + self.atk7
+                x1 = "[7]Attack7: " + self.atk7
                 return x1
             else:
-                x1 = "[7]Atak7: " + "Boş"
+                x1 = "[7]Attack7: " + "None"
                 return x1
 
     def mainscreen(self):
@@ -149,20 +149,20 @@ class Gui:
             print(Colorate.Diagonal(Colors.DynamicMIX((green, Col.black)), Center.XCenter(text)))
             print('\n')
             # print(stagenormal(f"Sürüm 0.0.4 {Col.reset}", "!", col2=green))
-            welcome = "Hoşgeldin! " + self.ID
+            welcome = "Welcome! " + self.ID
             print(stagenormal(welcome, "!", col2=green))
-            timeleft = "Kalan Günlerin : " + str(self.time)
+            timeleft = "Membership Left : " + str(self.time)
             print(stagenormal(timeleft, "!", col2=green))
 
             print('\n')
             mobguitext = "[1]Mob: "
             col1 = mobguitext + self.mob
             print(Colorate.Horizontal(Colors.green_to_blue, col1, 1))
-            print(Colorate.Color(Colors.green, "[2]İksir_Ayarları", True, ))
-            print(Colorate.Color(Colors.green, "[3]Avlan_Savaş_Ayarları", True, ))
-            print(Colorate.Color(Colors.green, "[b]Başla", True, ))
-            print(Colorate.Color(Colors.green, "[k]Çıkış", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            print(Colorate.Color(Colors.green, "[2]Potion_Settings", True, ))
+            print(Colorate.Color(Colors.green, "[3]Hunt_And_Fight_Settings", True, ))
+            print(Colorate.Color(Colors.green, "[start]Start", True, ))
+            print(Colorate.Color(Colors.green, "[exit]Quit", True, ))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             if x == "1":
                 self.blank()
                 self.moblvlselect()
@@ -180,7 +180,7 @@ class Gui:
                 exit(1)
             elif x == "exit":
                 exit(1)
-            elif x == "b":
+            elif x == "start":
                 script = MainProcess()
                 script.start()
 
@@ -188,36 +188,173 @@ class Gui:
         while True:
             self.blank()
             self.save()
-            c = "[1]Avlanma_Limiti: " + str(self.maxhunt)
+            c = "[1]Hunt_Limit: " + str(self.maxhunt)
             c2 = "[3]Büyücü: " + str(self.magelvl)
             print(Colorate.Color(Colors.green, c, True, ))
-            print(Colorate.Color(Colors.green, "[2]Süper_Vuruş_Ayarı ", True, ))
+            print(Colorate.Color(Colors.green, "[2]Super_Attack_Settings ", True, ))
             #print(Colorate.Color(Colors.green, c2, True, ))
-            print(Colorate.Color(Colors.green, "[g]Geri", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            print(Colorate.Color(Colors.green, "[exit]Back", True, ))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
-                print(Colorate.Color(Colors.purple, "Değer Değiştiriliyor", True, ))
+                print(Colorate.Color(Colors.purple, "Changing Variable!", True, ))
                 try:
-                    x = input(stage(f"Sayı Giriniz : {dark}-> {Col.reset}", "?", col2=bpurple))
+                    x = input(stage(f"Enter (NUMBER) : {dark}-> {Col.reset}", "?", col2=bpurple))
                     x = int(x)
                     self.maxhunt = x
                 except:
-                    print(Colorate.Color(Colors.purple, "Lütfen sadece sayı giriniz!", True, ))
+                    print(Colorate.Color(Colors.purple, "Please enter number only!", True, ))
                     time.sleep(2)
             elif x == "2":
                 self.superattack()
                 return
             elif x == "3":
                 self.blank()
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Açık", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Kapalı", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]True", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]False", 1))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.magelvl = "Açık"
                 elif x == "2":
                     self.magelvl = "Kapalı"
+            elif x == "g":
+                return "exit"
+            elif x == "k":
+                return "exit"
+            elif x == "back":
+                return "exit"
+            elif x == "b":
+                return "exit"
+            elif x == "exit":
+                return "exit"
+
+    def superattack(self):
+        while True:
+            self.blank()
+            self.save()
+            print(Colorate.Color(Colors.green, self.attackstring(1), True, ))
+            print(Colorate.Color(Colors.green, self.attackstring(2), True, ))
+            print(Colorate.Color(Colors.green, self.attackstring(3), True, ))
+            print(Colorate.Color(Colors.green, self.attackstring(4), True, ))
+            print(Colorate.Color(Colors.green, self.attackstring(5), True, ))
+            print(Colorate.Color(Colors.green, self.attackstring(6), True, ))
+            print(Colorate.Color(Colors.green, self.attackstring(7), True, ))
+            print(Colorate.Color(Colors.green, "[exit]Back", True, ))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = str(x)
+            if x == "1":
+                self.blank()
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Up", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Mid", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Down", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]None", 1))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = str(x)
+                if x == "1":
+                    self.atk1 = "Up"
+                elif x == "2":
+                    self.atk1 = "Mid"
+                elif x == "3":
+                    self.atk1 = "Down"
+                elif x == "4":
+                    self.atk1 = "None"
+            elif x == "2":
+                self.blank()
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Up", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Mid", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Down", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]None", 1))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = str(x)
+                if x == "1":
+                    self.atk2 = "Up"
+                elif x == "2":
+                    self.atk2 = "Mid"
+                elif x == "3":
+                    self.atk2 = "Down"
+                elif x == "4":
+                    self.atk2 = "None"
+            elif x == "3":
+                self.blank()
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Up", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Mid", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Down", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]None", 1))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = str(x)
+                if x == "1":
+                    self.atk3 = "Up"
+                elif x == "2":
+                    self.atk3 = "Mid"
+                elif x == "3":
+                    self.atk3 = "Down"
+                elif x == "4":
+                    self.atk3 = "None"
+            elif x == "4":
+                self.blank()
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Up", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Mid", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Down", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]None", 1))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = str(x)
+                if x == "1":
+                    self.atk4 = "Up"
+                elif x == "2":
+                    self.atk4 = "Mid"
+                elif x == "3":
+                    self.atk4 = "Down"
+                elif x == "4":
+                    self.atk4 = "None"
+            elif x == "5":
+                self.blank()
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Up", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Mid", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Down", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]None", 1))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = str(x)
+                if x == "1":
+                    self.atk5 = "Up"
+                elif x == "2":
+                    self.atk5 = "Mid"
+                elif x == "3":
+                    self.atk5 = "Down"
+                elif x == "4":
+                    self.atk5 = "None"
+            elif x == "6":
+                self.blank()
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Up", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Mid", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Down", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]None", 1))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = str(x)
+                if x == "1":
+                    self.atk6 = "Up"
+                elif x == "2":
+                    self.atk6 = "Mid"
+                elif x == "3":
+                    self.atk6 = "Down"
+                elif x == "4":
+                    self.atk6 = "None"
+            elif x == "7":
+                self.blank()
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Up", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Mid", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Down", 1))
+                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]None", 1))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = str(x)
+                if x == "1":
+                    self.atk7 = "Up"
+                elif x == "2":
+                    self.atk7 = "Mid"
+                elif x == "3":
+                    self.atk7 = "Down"
+                elif x == "4":
+                    self.atk7 = "None"
             elif x == "g":
                 return "exit"
             elif x == "k":
@@ -235,7 +372,7 @@ class Gui:
             print(Colorate.Color(Colors.green, "[1]Krets(1)", True, ))
             print(Colorate.Color(Colors.green, "[2]Delikopek(1)", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
                 self.mob = "Krets(1)"
@@ -263,7 +400,7 @@ class Gui:
             print(Colorate.Color(Colors.green, "[2]Erkekatesorumcek(2)", True, ))
             print(Colorate.Color(Colors.green, "[3]Zigred(2)", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
                 self.mob = "Yasliiskelet(2)"
@@ -299,7 +436,7 @@ class Gui:
             print(Colorate.Color(Colors.green, "[6]Erkekkulorumcegi(3)", True, ))
             print(Colorate.Color(Colors.green, "[7]Fitsilya(3)", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
                 self.mob = "Azginkopek(3)"
@@ -356,7 +493,7 @@ class Gui:
             print(Colorate.Color(Colors.green, "[11]Buz Hakurtu(4)", True, ))
             print(Colorate.Color(Colors.green, "[12]Krogan(4)", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
                 self.mob = "Yaslicinkopek(4)"
@@ -432,7 +569,7 @@ class Gui:
             print(Colorate.Color(Colors.green, "[10]Taş Lotusu Sürgünü(5)", True, ))
             print(Colorate.Color(Colors.green, "[11]Kırmızı Baltalar Sürgünü(5)", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
                 self.mob = "Durgharg(5)"
@@ -502,7 +639,7 @@ class Gui:
             print(Colorate.Color(Colors.green, "[8]Taş Lotusu Haini(6)", True, ))
             print(Colorate.Color(Colors.green, "[9]Levremar Askeri(6)", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
                 self.mob = "Tecrübeli Durgharg(6)"
@@ -563,7 +700,7 @@ class Gui:
             print(Colorate.Color(Colors.green, "[7]Sivri Dişli Aksak Kaplan(7)", True, ))
             print(Colorate.Color(Colors.green, "[8]GungIVO(7)", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
                 self.mob = "Levremar Lejyoneri(7)"
@@ -619,7 +756,7 @@ class Gui:
             print(Colorate.Color(Colors.green, "[6]Granit Golemi(8)", True, ))
             print(Colorate.Color(Colors.green, "[7]GungHO(8)", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
                 self.mob = "Boğazkeser Gordt(8)"
@@ -670,7 +807,7 @@ class Gui:
             print(Colorate.Color(Colors.green, "[5]Gardiyan GungHO(9)", True, ))
             print(Colorate.Color(Colors.green, "[6]Büyük Akrep(9)", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
                 self.mob = "Yırtıcı Gorgulya(9)"
@@ -711,7 +848,7 @@ class Gui:
             self.blank()
             print(Colorate.Color(Colors.green, "[1]Kral Akrep(10)", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
                 self.mob = "Kral Akrep(10)"
@@ -742,7 +879,7 @@ class Gui:
             print(Colorate.Color(Colors.green, "[9]Seviye 9 Moblar", True, ))
             print(Colorate.Color(Colors.green, "[10]Seviye 10 Moblar", True, ))
             print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
                 self.blank()
@@ -807,16 +944,16 @@ class Gui:
             print(Colorate.Color(Colors.green, self.pocketstring(6), True, ))
             print(Colorate.Color(Colors.green, self.pocketstring(7), True, ))
             print(Colorate.Color(Colors.green, "[g]Geri", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
                 self.blank()
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
-                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]None", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket1 = "Güç"
@@ -825,7 +962,7 @@ class Gui:
                 elif x == "3":
                     self.pocket1 = "Mana"
                 elif x == "4":
-                    self.pocket1 = "Boş"
+                    self.pocket1 = "None"
                 elif x == "5":
                     self.pocket1 = "Savaş Başında Kullan"
 
@@ -834,9 +971,9 @@ class Gui:
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
-                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]None", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket2 = "Güç"
@@ -845,7 +982,7 @@ class Gui:
                 elif x == "3":
                     self.pocket2 = "Mana"
                 elif x == "4":
-                    self.pocket2 = "Boş"
+                    self.pocket2 = "None"
                 elif x == "5":
                     self.pocket2 = "Savaş Başında Kullan"
             elif x == "3":
@@ -853,9 +990,9 @@ class Gui:
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
-                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]None", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket3 = "Güç"
@@ -864,7 +1001,7 @@ class Gui:
                 elif x == "3":
                     self.pocket3 = "Mana"
                 elif x == "4":
-                    self.pocket3 = "Boş"
+                    self.pocket3 = "None"
                 elif x == "5":
                     self.pocket3 = "Savaş Başında Kullan"
             elif x == "4":
@@ -872,9 +1009,9 @@ class Gui:
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
-                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]None", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket4 = "Güç"
@@ -883,7 +1020,7 @@ class Gui:
                 elif x == "3":
                     self.pocket4 = "Mana"
                 elif x == "4":
-                    self.pocket4 = "Boş"
+                    self.pocket4 = "None"
                 elif x == "5":
                     self.pocket4 = "Savaş Başında Kullan"
             elif x == "5":
@@ -891,9 +1028,9 @@ class Gui:
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
-                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]None", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket5 = "Güç"
@@ -902,7 +1039,7 @@ class Gui:
                 elif x == "3":
                     self.pocket5 = "Mana"
                 elif x == "4":
-                    self.pocket5 = "Boş"
+                    self.pocket5 = "None"
                 elif x == "5":
                     self.pocket5 = "Savaş Başında Kullan"
 
@@ -911,9 +1048,9 @@ class Gui:
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
-                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]None", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket6 = "Güç"
@@ -922,7 +1059,7 @@ class Gui:
                 elif x == "3":
                     self.pocket6 = "Mana"
                 elif x == "4":
-                    self.pocket6 = "Boş"
+                    self.pocket6 = "None"
                 elif x == "5":
                     self.pocket6 = "Savaş Başında Kullan"
             elif x == "7":
@@ -930,9 +1067,9 @@ class Gui:
                 print(Colorate.Horizontal(Colors.green_to_red, "[1]Güç", 1))
                 print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Hayat", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[3]Mana", 1))
-                print(Colorate.Horizontal(Colors.green_to_blue, "[4]Boş", 1))
+                print(Colorate.Horizontal(Colors.green_to_blue, "[4]None", 1))
                 print(Colorate.Horizontal(Colors.green_to_blue, "[5]Savaş Başında Kullan", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+                x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
                 x = str(x)
                 if x == "1":
                     self.pocket7 = "Güç"
@@ -941,146 +1078,9 @@ class Gui:
                 elif x == "3":
                     self.pocket7 = "Mana"
                 elif x == "4":
-                    self.pocket7 = "Boş"
+                    self.pocket7 = "None"
                 elif x == "5":
                     self.pocket7 = "Savaş Başında Kullan"
-            elif x == "g":
-                return "exit"
-            elif x == "k":
-                return "exit"
-            elif x == "back":
-                return "exit"
-            elif x == "b":
-                return "exit"
-            elif x == "exit":
-                return "exit"
-
-    def superattack(self):
-        while True:
-            self.blank()
-            self.save()
-            print(Colorate.Color(Colors.green, self.attackstring(1), True, ))
-            print(Colorate.Color(Colors.green, self.attackstring(2), True, ))
-            print(Colorate.Color(Colors.green, self.attackstring(3), True, ))
-            print(Colorate.Color(Colors.green, self.attackstring(4), True, ))
-            print(Colorate.Color(Colors.green, self.attackstring(5), True, ))
-            print(Colorate.Color(Colors.green, self.attackstring(6), True, ))
-            print(Colorate.Color(Colors.green, self.attackstring(7), True, ))
-            print(Colorate.Color(Colors.green, "[g]Geri", True, ))
-            x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
-            x = str(x)
-            if x == "1":
-                self.blank()
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Yukarı", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Orta", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Alt", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]Boş", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
-                x = str(x)
-                if x == "1":
-                    self.atk1 = "Yukarı"
-                elif x == "2":
-                    self.atk1 = "Orta"
-                elif x == "3":
-                    self.atk1 = "Alt"
-                elif x == "4":
-                    self.atk1 = "Boş"
-            elif x == "2":
-                self.blank()
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Yukarı", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Orta", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Alt", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]Boş", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
-                x = str(x)
-                if x == "1":
-                    self.atk2 = "Yukarı"
-                elif x == "2":
-                    self.atk2 = "Orta"
-                elif x == "3":
-                    self.atk2 = "Alt"
-                elif x == "4":
-                    self.atk2 = "Boş"
-            elif x == "3":
-                self.blank()
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Yukarı", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Orta", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Alt", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]Boş", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
-                x = str(x)
-                if x == "1":
-                    self.atk3 = "Yukarı"
-                elif x == "2":
-                    self.atk3 = "Orta"
-                elif x == "3":
-                    self.atk3 = "Alt"
-                elif x == "4":
-                    self.atk3 = "Boş"
-            elif x == "4":
-                self.blank()
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Yukarı", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Orta", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Alt", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]Boş", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
-                x = str(x)
-                if x == "1":
-                    self.atk4 = "Yukarı"
-                elif x == "2":
-                    self.atk4 = "Orta"
-                elif x == "3":
-                    self.atk4 = "Alt"
-                elif x == "4":
-                    self.atk4 = "Boş"
-            elif x == "5":
-                self.blank()
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Yukarı", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Orta", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Alt", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]Boş", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
-                x = str(x)
-                if x == "1":
-                    self.atk5 = "Yukarı"
-                elif x == "2":
-                    self.atk5 = "Orta"
-                elif x == "3":
-                    self.atk5 = "Alt"
-                elif x == "4":
-                    self.atk5 = "Boş"
-            elif x == "6":
-                self.blank()
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Yukarı", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Orta", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Alt", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]Boş", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
-                x = str(x)
-                if x == "1":
-                    self.atk6 = "Yukarı"
-                elif x == "2":
-                    self.atk6 = "Orta"
-                elif x == "3":
-                    self.atk6 = "Alt"
-                elif x == "4":
-                    self.atk6 = "Boş"
-            elif x == "7":
-                self.blank()
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[1]Yukarı", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[2]Orta", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[3]Alt", 1))
-                print(Colorate.Horizontal(Colors.green_to_yellow, "[4]Boş", 1))
-                x = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
-                x = str(x)
-                if x == "1":
-                    self.atk7 = "Yukarı"
-                elif x == "2":
-                    self.atk7 = "Orta"
-                elif x == "3":
-                    self.atk7 = "Alt"
-                elif x == "4":
-                    self.atk7 = "Boş"
             elif x == "g":
                 return "exit"
             elif x == "k":
@@ -1145,14 +1145,13 @@ class Gui:
                     self.ID = usernameaddhotmail
                     self.userlogsecond = authsec.sign_in_with_email_and_password(usernameaddhotmail, self.Passworda)
                 except:
-                    print(stagenormal(f"Kullanıcı adı veya şifre geçersiz {Col.reset}", "!", col2=red))
-                    print(stagenormal(f"3 saniye sonra tekrar deneyin {Col.reset}", "!", col2=red))
+                    print(stagenormal(f"Unknown Email Or Password {Col.reset}", "!", col2=red))
+                    print(stagenormal(f"Try Again In 3 sec {Col.reset}", "!", col2=red))
                     time.sleep(3)
                     return 0
         return 1
 
     def checktimeleft(self):
-
         if "@gmail.com" in self.ID:
             IDTEMP = self.ID.replace("@gmail.com", "")
         elif "@hotmail.com" in self.ID:
@@ -1169,16 +1168,16 @@ class Gui:
             fdata = x["time"]
             x = self.timecalculator(current, fdata)
             if x is None:
-                print(stagenormal(f"Üyelik Süresi Tükenmiş Veya Mecvut Değil! {Col.reset}", "!", col2=green))
+                print(stagenormal(f"Membership Expired Or Not Available! {Col.reset}", "!", col2=green))
                 time.sleep(3)
                 return 0
             else:
-                print(stagenormal(f"Giriş Yapıldı! {Col.reset}", "!", col2=green))
+                print(stagenormal(f"Logged In! {Col.reset}", "!", col2=green))
                 self.time = x
                 time.sleep(2)
                 return 1
         except:
-            print(stagenormal(f"Üyelik Süresi Tükenmiş Veya Mecvut Değil! {Col.reset}", "!", col2=green))
+            print(stagenormal(f"Membership Expired Or Not Available! {Col.reset}", "!", col2=green))
             time.sleep(3)
             return 0
 
@@ -1187,7 +1186,7 @@ class Gui:
         versionn = (versionn.val())
         version=str(versionn["version"])
         if version !=self.version:
-            print(stagenormal(f"Geçersiz Uygulama Sürümü Güncelleyiniz!! {Col.reset}", "!", col2=green))
+            print(stagenormal(f"Invalid Version Please Update!! {Col.reset}", "!", col2=green))
             time.sleep(3)
             return 0
 
@@ -1196,38 +1195,37 @@ class Gui:
             IDTEMP = self.ID.replace("@gmail.com", "")
         elif "@hotmail.com" in self.ID:
             IDTEMP = self.ID.replace("@hotmail.com", "")
-
         current_machine_id = str(subprocess.check_output('wmic csproduct get uuid'), 'utf-8').split('\n')[1].strip()
         users = dbsec.child("User").get(self.userlogsecond['idToken'])
-
         value = (users.val())
         try:
             uuidvalue = str(value[IDTEMP])
         except:
             data = {IDTEMP: current_machine_id}
             dbsec.child("User").update({IDTEMP: current_machine_id},(self.userlogsecond['idToken']))
-            print(stagenormal(f"Hesap Bağlandı Birdaha Giriş Yapınız {Col.reset}", "!", col2=dark))
+            print(stagenormal(f"Account Linked To Computer Succesfuly"
+                              f" Try Logging In Again {Col.reset}", "!", col2=dark))
             time.sleep(3)
             return 0
         if uuidvalue == current_machine_id:
-            print(stagenormal(f"Doğrulandı {Col.reset}", "!", col2=green))
+            print(stagenormal(f"Confirmed! {Col.reset}", "!", col2=green))
             return 1
         else:
-            print(stagenormal(f"Tanınmayan Bilgisayar!!! {Col.reset}", "!", col2=red))
+            print(stagenormal(f"Unknown Computer!!! {Col.reset}", "!", col2=red))
             time.sleep(3)
             return 0
 
     def login(self):
         System.Size(75, 22)
-        System.Title("Raven Dwar 1.0.2")
+        System.Title("Raven WarOfDragons(English) 1.0.2")
         Cursor.HideCursor()
         print(Colorate.Diagonal(Colors.DynamicMIX((green, Col.black)), Center.XCenter(text)))
-        print(
-            Colorate.Color(Colors.green, "!!!Eposta yazarken @gmail.com eya @hotmail.com koymanıza gerek yok", True, ))
+        print(Colorate.Color(Colors.green,
+                             "!!!While Writing Email You Dont Have To Add @gmail.com or @hotmail.com", True, ))
         print('\n')
-        self.Usernamea = input(stage(f"Eposta : {dark}-> {Col.reset}", "?", col2=bpurple))
-        self.Passworda = input(stage(f"Şifre : {dark}-> {Col.reset}", "?", col2=bpurple))
-        print(stagenormal(f"Giriş Yapılıyor {Col.reset}", "!", col2=dark))
+        self.Usernamea = input(stage(f"Email : {dark}-> {Col.reset}", "?", col2=bpurple))
+        self.Passworda = input(stage(f"Passowrd : {dark}-> {Col.reset}", "?", col2=bpurple))
+        print(stagenormal(f"Logging in {Col.reset}", "!", col2=dark))
         x = self.authtries()
         if x == 0:
             print(3)
@@ -1248,9 +1246,9 @@ class Gui:
 
     def register(self):
         self.blank()
-        print(Colorate.Color(Colors.green, "!!!Emailinizi Yanlış Girerseniz Hesabınızı Geri Alamazsınız", True, ))
-        print(Colorate.Color(Colors.green, "!!!Şifreniz Min 3 Haneli Olmalıdır", True, ))
-        print(Colorate.Color(Colors.green, "!!!Sadece Hotmail Veya Gmail Kullanabilirsiniz", True, ))
+        print(Colorate.Color(Colors.green, "!!!If You Enter Your Email Wrong, You Can't Get Your Account Back", True, ))
+        print(Colorate.Color(Colors.green, "!!!Your Password Must Have Min 3 Digits", True, ))
+        print(Colorate.Color(Colors.green, "!!!You Can Only Use Hotmail Or Gmail", True, ))
         print('\n')
         print('\n')
         print('\n')
@@ -1259,27 +1257,27 @@ class Gui:
         print('\n')
         print('\n')
         print('\n')
-        print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
+        print(Colorate.Color(Colors.green, "[exit]Main Menu", True, ))
         email = input(stage(f"Eposta : {dark}-> {Col.reset}", "?", col2=bpurple))
-        if str(email) == "k":
+        if str(email) == "exit":
             return 0
         password = input(stage(f"Şifre : {dark}-> {Col.reset}", "?", col2=bpurple))
-        if str(password) == "k":
+        if str(password) == "exit":
             return 0
         password2 = input(stage(f"Şifre Tekrar : {dark}-> {Col.reset}", "?", col2=bpurple))
-        if str(password2) == "k":
+        if str(password2) == "exit":
             return 0
         if password == password2:
             try:
                 auth.create_user_with_email_and_password(email, password)
                 authsec.create_user_with_email_and_password(email, password)
             except:
-                print(Colorate.Color(Colors.green, "!HATA!",True, ))
+                print(Colorate.Color(Colors.green, "!Error!",True, ))
 
     def paswordreset(self):
         self.blank()
-        print(Colorate.Color(Colors.green, "!!!Eposta Adresinize 2 Adet Eposta Ge"
-                                           "licek 2 Linkide Takip Ediniz Ve Aynı Şifreyi Giriniz", True, ))
+        print(Colorate.Color(Colors.green, "!!!2 E-mails Will Be Sent To Your E-mail Address. Follow the 2 Links And En"
+                                           "ter The Same Password.", True, ))
         print('\n')
         print('\n')
         print('\n')
@@ -1289,32 +1287,31 @@ class Gui:
         print('\n')
         print('\n')
         print('\n')
-        print(Colorate.Color(Colors.green, "[k]Ana Menü", True, ))
-        email = input(stage(f"Eposta : {dark}-> {Col.reset}", "?", col2=bpurple))
-        if str(email) == "k":
+        print(Colorate.Color(Colors.green, "[exit]Main Menu", True, ))
+        email = input(stage(f"Email : {dark}-> {Col.reset}", "?", col2=bpurple))
+        if str(email) == "exit":
             return 0
         try:
             auth.send_password_reset_email(email)
             authsec.send_password_reset_email(email)
             print(Colorate.Color(Colors.green, "", True, ))
         except:
-            print(Colorate.Color(Colors.green, "!HATA!",True, ))
+            print(Colorate.Color(Colors.green, "!Error!",True, ))
 
     def startmenu(self):
-        System.Title("Raven Dwar 1.0.2")
-        System.Size(75, 22)
-        Cursor.HideCursor()
         while True:
+            System.Title("Raven WarOfDragons(English) 1.0.2")
+            System.Size(75, 22)
+            Cursor.HideCursor()
             print(Colorate.Diagonal(Colors.DynamicMIX((green, Col.black)), Center.XCenter(text)))
             print('\n')
             print('\n')
             print('\n')
-            print(Colorate.Color(Colors.green, "[1]Giriş Yap", True, ))
-            print(Colorate.Color(Colors.green, "[2]Üye Ol", True, ))
-            print(Colorate.Color(Colors.green, "[3]Şifre Kurtarma", True, ))
-            #print(Colorate.Color(Colors.green, "[4]Settings", True, ))
-            print(Colorate.Color(Colors.green, "[k]Kapat", True, ))
-            inp = input(stage(f"Girdi : {dark}-> {Col.reset}", "?", col2=bpurple))
+            print(Colorate.Color(Colors.green, "[1]Login", True, ))
+            print(Colorate.Color(Colors.green, "[2]Register", True, ))
+            print(Colorate.Color(Colors.green, "[3]Password Recovery", True, ))
+            print(Colorate.Color(Colors.green, "[exit]Quit", True, ))
+            inp = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             if str(inp) == "1":
                 x = self.login()
                 if x is True:
@@ -1575,17 +1572,17 @@ class MainProcess:
             return 1
 
     def castattack(self,caller):
-        if caller == "Yukarı":
+        if caller == "Up":
             x = pyautogui.locateOnScreen(aup, grayscale=True, confidence=0.80)
             if x is not None:
                 pyautogui.click(x)
                 return 1
-        elif caller == "Orta":
+        elif caller == "Mid":
             x = pyautogui.locateOnScreen(amid, grayscale=True, confidence=0.80)
             if x is not None:
                 pyautogui.click(x)
                 return 1
-        elif caller == "Alt":
+        elif caller == "Down":
             x = pyautogui.locateOnScreen(alow, grayscale=True, confidence=0.80)
             if x is not None:
                 pyautogui.click(x)
@@ -1594,7 +1591,7 @@ class MainProcess:
             return None
 
     def castmagic(self,caller):
-        if caller == "Yukarı":
+        if caller == "Up":
             pyautogui.click(self.vs)
             pyautogui.press("q")
             return 1
@@ -1815,8 +1812,8 @@ class MainProcess:
                 if x == 158:
                     return 158
                 if counter == 1:
-                    if self.atk1 != "Boş":
-                        x = self.castmagic("Yukarı")
+                    if self.atk1 != "None":
+                        x = self.castmagic("Up")
             else:
                 errorcount += 1
         return None
@@ -1853,7 +1850,7 @@ class MainProcess:
                 errorcount = 0
                 self.hpcheck()
                 if counter == 1:
-                    if self.atk1 != "Boş":
+                    if self.atk1 != "None":
                         self.cokeuse()
                         x = self.castattack(self.atk1)
                         if x is not None:
@@ -1861,7 +1858,7 @@ class MainProcess:
                     else:
                         counter = 1
                 elif counter == 2:
-                    if self.atk2 != "Boş":
+                    if self.atk2 != "None":
                         self.cokeuse()
                         x = self.castattack(self.atk2)
                         if x is not None:
@@ -1869,7 +1866,7 @@ class MainProcess:
                     else:
                         counter = 1
                 elif counter == 3:
-                    if self.atk3 != "Boş":
+                    if self.atk3 != "None":
                         self.cokeuse()
                         x = self.castattack(self.atk3)
                         if x is not None:
@@ -1877,7 +1874,7 @@ class MainProcess:
                     else:
                         counter = 1
                 elif counter == 4:
-                    if self.atk4 != "Boş":
+                    if self.atk4 != "None":
                         self.cokeuse()
                         x = self.castattack(self.atk4)
                         if x is not None:
@@ -1885,7 +1882,7 @@ class MainProcess:
                     else:
                         counter = 1
                 elif counter == 5:
-                    if self.atk5 != "Boş":
+                    if self.atk5 != "None":
                         self.cokeuse()
                         x = self.castattack(self.atk5)
                         if x is not None:
@@ -1893,7 +1890,7 @@ class MainProcess:
                     else:
                         counter = 1
                 elif counter == 6:
-                    if self.atk6 != "Boş":
+                    if self.atk6 != "None":
                         self.cokeuse()
                         x = self.castattack(self.atk6)
                         if x is not None:
@@ -1901,7 +1898,7 @@ class MainProcess:
                     else:
                         counter = 1
                 elif counter == 7:
-                    if self.atk7 != "Boş":
+                    if self.atk7 != "None":
                         self.cokeuse()
                         x = self.castattack(self.atk7)
                         if x is not None:
