@@ -558,14 +558,12 @@ class Gui:
         while True:
             self.blank()
             print(Colorate.Color(Colors.green, "[1]Azgin Kopek(3)", True, ))
-            print(Colorate.Color(Colors.green, "[2]Kretch_Guide(3)", True, ))
-            print(Colorate.Color(Colors.green, "[3]Female_Fire_Spider(3)", True, ))
+            print(Colorate.Color(Colors.green, "[2]Reis Krets(3)", True, ))
+            print(Colorate.Color(Colors.green, "[3]Disi Ates Orumcegi(3)", True, ))
             print(Colorate.Color(Colors.green, "[4]Savasci Zigred(3)", True, ))
             print(Colorate.Color(Colors.green, "[5]Savasci_Iskelet(3)", True, ))
-            print(Colorate.Color(Colors.green, "[6]Male_Ashen_Spider(3)", True, ))
-            print(Colorate.Color(Colors.green, "[7]Phitzell(3)", True, ))
-            print(Colorate.Color(Colors.green, "[8]Demon_Hound(3)", True, ))
-            print(Colorate.Color(Colors.green, "[exit]Main Menu", True, ))
+            print(Colorate.Color(Colors.green, "[6]Erkek Kul Orumcegi(3)", True, ))
+            print(Colorate.Color(Colors.green, "[k]Ana Menu", True, ))
             x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
@@ -573,12 +571,12 @@ class Gui:
                 self.mobpath = "img/dwar/mobs/3Level/azginkopek.png"
                 return x
             elif x == "2":
-                self.mob = "Kretch_Guide(3)"
-                self.mobpath = "img/warof/mobs/3Level/Kretch_Guide.png"
+                self.mob = "Reis Krets(3)"
+                self.mobpath = "img/dwar/mobs/3Level/reiskrets.png"
                 return x
             elif x == "3":
-                self.mob = "Female_Fire_Spider(3)"
-                self.mobpath = "img/warof/mobs/3Level/Female_Fire_Spider.png"
+                self.mob = "Disi Ates Orumcegi(3)"
+                self.mobpath = "img/dwar/mobs/3Level/disiates.png"
                 return x
             elif x == "4":
                 self.mob = "Savasci Zigred(3)"
@@ -589,16 +587,8 @@ class Gui:
                 self.mobpath = "img/dwar/mobs/3Level/savasciiskelet.png"
                 return x
             elif x == "6":
-                self.mob = "Male_Ashen_Spider(3)"
-                self.mobpath = "img/warof/mobs/3Level/Male_Ashen_Spider.png"
-                return x
-            elif x == "7":
-                self.mob = "Phitzell(3)"
-                self.mobpath = "img/warof/mobs/3Level/Phitzell.png"
-                return x
-            elif x == "8":
-                self.mob = "Demon_Hound(3)"
-                self.mobpath = "img/warof/mobs/3Level/Demon_Hound.png"
+                self.mob = "Erkek Kul Orumcegi(3)"
+                self.mobpath = "img/dwar/mobs/3Level/erkekkul.png"
                 return x
             elif x == "g":
                 return "exit"
@@ -614,44 +604,44 @@ class Gui:
     def lvl4mobs(self):
         while True:
             self.blank()
-            print(Colorate.Color(Colors.green, "[1]Veteran_Demond_Hound(4)", True, ))
-            print(Colorate.Color(Colors.green, "[2]Purple_Zigred(4)", True, ))
-            print(Colorate.Color(Colors.green, "[3]Giant_Zigred(4)", True, ))
-            print(Colorate.Color(Colors.green, "[4]Zombie(4)", True, ))
-            print(Colorate.Color(Colors.green, "[5]Russet_Kakurt(4)", True, ))
-            print(Colorate.Color(Colors.green, "[6]Young_Arbois(4)", True, ))
+            print(Colorate.Color(Colors.green, "[1]Yasli Cin Kopek(4)", True, ))
+            print(Colorate.Color(Colors.green, "[2]Erguvani Zigred(4)", True, ))
+            print(Colorate.Color(Colors.green, "[3]Kocaman Zigred(4)", True, ))
+            print(Colorate.Color(Colors.green, "[4]Zombi(4)", True, ))
+            print(Colorate.Color(Colors.green, "[5]Hakurt(4)", True, ))
+            print(Colorate.Color(Colors.green, "[6]Genc Oduni(4)", True, ))
             print(Colorate.Color(Colors.green, "[7]Young_Berona_Tiger(4)", True, ))
             print(Colorate.Color(Colors.green, "[8]Cunning_Phitzell(4)", True, ))
             print(Colorate.Color(Colors.green, "[9]Arboris(4)", True, ))
             print(Colorate.Color(Colors.green, "[10]Veteran_Berona_Tiger(4)", True, ))
             print(Colorate.Color(Colors.green, "[11]Ice_Kakurt(4)", True, ))
             print(Colorate.Color(Colors.green, "[12]Krogan(4)", True, ))
-            print(Colorate.Color(Colors.green, "[exit]Main Menu", True, ))
+            print(Colorate.Color(Colors.green, "[k]Ana Menu", True, ))
             x = input(stage(f"Input : {dark}-> {Col.reset}", "?", col2=bpurple))
             x = str(x)
             if x == "1":
-                self.mob = "Veteran_Demond_Hound(4)"
-                self.mobpath = "img/warof/mobs/4Level/Veteran_Demond_Hound.png"
+                self.mob = "Yasli Cin Kopek(4)"
+                self.mobpath = "img/dwar/mobs/4Level/yaslicin.png"
                 return x
             elif x == "2":
-                self.mob = "Purple_Zigred(4)"
-                self.mobpath = "img/warof/mobs/4Level/Purple_Zigred.png"
+                self.mob = "Erguvani Zigred(4)"
+                self.mobpath = "img/dwar/mobs/4Level/erguvanizigred.png"
                 return x
             elif x == "3":
-                self.mob = "Giant_Zigred(4)"
-                self.mobpath = "img/warof/mobs/4Level/Giant_Zigred.png"
+                self.mob = "Kocaman Zigred(4)"
+                self.mobpath = "img/dwar/mobs/4Level/kocamanzigred.png"
                 return x
             elif x == "4":
-                self.mob = "Zombie(4)"
-                self.mobpath = "img/warof/mobs/4Level/Zombie.png"
+                self.mob = "Zombi(4)"
+                self.mobpath = "img/dwar/mobs/4Level/zombi.png"
                 return x
             elif x == "5":
-                self.mob = "Russet_Kakurt(4)"
-                self.mobpath = "img/warof/mobs/4Level/Russet_Kakurt.png"
+                self.mob = "Hakurt(4)"
+                self.mobpath = "img/dwar/mobs/4Level/hakurt.png"
                 return x
             elif x == "6":
-                self.mob = "Young_Arbois(4)"
-                self.mobpath = "img/warof/mobs/4Level/Young_Arbois.png"
+                self.mob = "Genc Oduni(4)"
+                self.mobpath = "img/dwar/mobs/4Level/gencoduni.png"
                 return x
             elif x == "7":
                 self.mob = "Young_Berona_Tiger(4)"
@@ -1725,6 +1715,9 @@ class MainProcess:
 
 
     def checkwin(self):
+        death = self.checkimage("img/global/death.png", 0.80, None, None, None, None)
+        if death is not None:
+            self.aquit()
         x = self.checkimage(win, 0.80, None, None, None, None)
         if x is not None:
             self.printer("Won!!!")
@@ -1802,6 +1795,8 @@ class MainProcess:
         else:
             return None
 
+
+
     def huntmob(self):
         rand=random.randint(1,2)
         time.sleep(rand)
@@ -1813,7 +1808,16 @@ class MainProcess:
             xx=x[0]
             y=x[1]
             pyautogui.moveTo(xx,y)
-            pyautogui.move(30, -30)
+            if self.mob == ("Disi Ates Orumcegi(3)"):
+                pyautogui.move(20, 0)
+            elif self.mob == ("Erkek Ates Orumcegi(2)"):
+                pyautogui.move(20, 0)
+            elif self.mob == ("Erkek Kul Orumcegi(3)"):
+                pyautogui.move(20, 0)
+            elif self.mob == ("Yasli Cin Kopek(4)"):
+                pyautogui.move(20, 0)
+                
+            pyautogui.move(40, -30)
             pyautogui.click()
             pyautogui.click()
             x = self.errorcheck()
@@ -1843,6 +1847,8 @@ class MainProcess:
         else:
             self.printer("Mob Bulunamadı!!")
             return None
+
+
 
     def cokeuse(self):
         #POWER POTİON
