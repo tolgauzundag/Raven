@@ -1,31 +1,4 @@
 from pystyle import *
-import pyrebase
-
-firebaseConfig={ "apiKey": "AIzaSyC3fvl8ZWICyNWuHGkqPxTMRWnfOOKMhNk",
-  "authDomain": "project-raven-c48d2.firebaseapp.com",
-  "databaseURL": "https://project-raven-c48d2-default-rtdb.europe-west1.firebasedatabase.app",
-  "projectId": "project-raven-c48d2",
-  "storageBucket": "project-raven-c48d2.appspot.com",
-  "messagingSenderId": "176222167092",
-  "appId": "1:176222167092:web:2edc8e1e5522e23be4ea61",
-  "measurementId": "G-Z9QX5P2SJ5"}
-
-uidsystem = {
-  "apiKey": "AIzaSyCH5qwnuWCQVwdcE3Qbvz11I-9A0RMXi9s",
-  "authDomain": "animated-flow-318519.firebaseapp.com",
-  "databaseURL": "https://animated-flow-318519-default-rtdb.firebaseio.com",
-  "projectId": "animated-flow-318519",
-  "storageBucket": "animated-flow-318519.appspot.com",
-  "messagingSenderId": "519430581076",
-  "appId": "1:519430581076:web:6210e69583b6e7696c36c1"
-};
-
-
-firebasee=pyrebase.initialize_app(uidsystem)
-dbsec=firebasee.database()
-authsec=firebasee.auth()
-
-
 
 text = r"""8888888b.         d8888 888     888 8888888888 888b    888 
 888   Y88b       d88888 888     888 888        8888b   888 
@@ -47,19 +20,23 @@ red = Col.red
 blue = Col.blue
 gray = Col.gray
 bpurple = Colors.StaticMIX((Col.purple, Col.blue, Col.blue))
-firebase=pyrebase.initialize_app(firebaseConfig)
-auth=firebase.auth()
-db=firebase.database()
 close = "img/dwar/buttons/close.png"
 cancel = "img/dwar/buttons/cancel.png"
 win = "img/dwar/fight/win2.png"
 bear = "img/dwar/fight/bear.png"
 milk = "img/dwar/fight/milk.png"
+blueheal = "img/dwar/fight/blueheal.png"
+greenheal = "img/dwar/fight/greenheal.png"
+grayheal = "img/dwar/fight/grayheal.png"
 mana = "img/dwar/fight/mana.png"
 minimana = "img/dwar/fight/minimana.png"
 s1 = "img/dwar/fight/11.png"
 s2 = "img/dwar/fight/22.png"
+step1 = "img/dwar/fight/exit.png"
 minimilk = "img/dwar/fight/minimilk.png"
+miniblueheal= "img/dwar/fight/blueminiheal.png"
+minigreenheal = "img/dwar/fight/greenminiheal.png"
+minigrayheal = "img/dwar/fight/grayminiheal.png"
 coke = "img/dwar/fight/coke.png"
 minicoke = "img/dwar/fight/minicoke.png"
 fight = "img/global/vs.png"
@@ -67,6 +44,7 @@ map = "img/global/map.png"
 sword = "img/global/sword2.png"
 mage = "img/global/mage.png"
 closebutton = "img/dwar/buttons/quit.png"
+dead = "img/dwar/error/idead.png"
 ####
 test = "img/global/test.png"
 test3 = "img/global/test3.png"
@@ -94,3 +72,4 @@ def stagenormal(text: str, symbol: str = '...', col1=light, col2=None) -> str:
   if col2 is None:
     col2 = light if symbol == '...' else purple
   return f""" {Col.Symbol(symbol, col1, dark)} {col2}{text}{Col.reset}"""
+

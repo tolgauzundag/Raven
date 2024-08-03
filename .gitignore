@@ -1,5 +1,8 @@
 
-testgui.build/module.__parents_main__.c
-ravensave.dat
+*.dat
+manabar.png
+hpbar.png
+main.exe
+warofmain.exe
 __pycache__/variables.cpython-310.pyc
-__pycache__/uuid.cpython-310.pyc
+*.pyc
